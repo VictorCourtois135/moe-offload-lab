@@ -1,0 +1,25 @@
+{
+ "step_ms": 8.433981250163924,
+ "policy": "lo",
+ "k": {
+  "2": {
+   "tokens_per_step": 1.1104294478527608,
+   "accepted_share": 0.10082872928176796,
+   "verify_ms": 296.7470700008562,
+   "expected_speedup": 0.03156001217735037
+  },
+  "4": {
+   "tokens_per_step": 1.13125,
+   "accepted_share": 0.11740331491712708,
+   "verify_ms": 356.00494999962393,
+   "expected_speedup": 0.02680002423915178
+  },
+  "6": {
+   "tokens_per_step": 1.134796238244514,
+   "accepted_share": 0.12016574585635359,
+   "verify_ms": 393.0045099987183,
+   "expected_speedup": 0.024353028915983684
+  }
+ },
+ "verdict": "pas rentable sur cette machine (gain < 15 %)"
+}

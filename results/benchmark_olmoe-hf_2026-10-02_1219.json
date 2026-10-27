@@ -1,0 +1,297 @@
+{
+ "date": "2026-10-02_1219",
+ "model": "D:\\models\\olmoe-hf",
+ "args": {
+  "model": "D:\\models\\olmoe-hf",
+  "store": "C:\\moe-store\\olmoe-i8",
+  "dense": "auto",
+  "dtype": "float16",
+  "vram_gb": null,
+  "ram_gb": 5.0,
+  "vram_reserve_gb": 1.0,
+  "ram_reserve_gb": 3.0,
+  "preload_lo": "auto",
+  "dense_int8": true,
+  "no_prefetch": false,
+  "no_qstar": false,
+  "usage": null,
+  "no_fast_decode": false,
+  "no_prefetch_adaptive": false,
+  "prefetch_depth": 1,
+  "no_direct_io": false,
+  "no_sort_reads": false,
+  "io_workers": null,
+  "int4_unpacked": false,
+  "no_triton": false,
+  "no_grouped": false,
+  "no_cuda_graphs": false,
+  "graph_max_len": 2048,
+  "hot_store": null,
+  "full_graph": false,
+  "cache_eviction": "lrfu",
+  "prefetch_mass": null,
+  "configs": "lo,hobbit@0.8",
+  "t1": 0.6,
+  "miss_t1_bench": 0.3,
+  "max_new_tokens": 64,
+  "prompts": 8,
+  "eval_tokens": 256,
+  "repeats": 1,
+  "save_ref": null,
+  "ref": "results\\ref_fp16.pt",
+  "quality_mode": "decode",
+  "out": "C:\\Users\\Home\\becode_projects\\moe-offload-lab\\results",
+  "policy": "hi",
+  "t2": null,
+  "protect": "",
+  "hi_vote": 0.5
+ },
+ "environment": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.0",
+  "torch": "2.14.0+cu130",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "cpu_threads": 12,
+  "ram_total_gib": 15.8,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "vram_total_gib": 6.0,
+  "transformers": "5.15.1",
+  "store": "C:\\moe-store\\olmoe-i8",
+  "store_precisions": [
+   "int8",
+   "int4"
+  ],
+  "fast_budget_gib": 3.38,
+  "host_budget_gib": 5.0,
+  "b_pcie_gbs": 12.58,
+  "b_host_gbs": 1.23,
+  "prefetch": true,
+  "qstar": true
+ },
+ "results": {
+  "lo": {
+   "policy": "lo",
+   "speed": {
+    "decode_tok_s": 114.56325374723556,
+    "ttft_s": 0.7929772499919636
+   },
+   "stats": {
+    "forwards": 415,
+    "tokens": 627,
+    "layer_calls": 6640,
+    "pairs": 80256,
+    "skipped": 0,
+    "requests": 58579,
+    "need_hi": 0,
+    "miss_downgrades": 0,
+    "used_hi": 0,
+    "fast_hits": 57580,
+    "prefetch_hits": 25,
+    "fills": 999,
+    "cpu_execs": 0,
+    "host_hits": 18,
+    "disk_reads": 1024,
+    "bytes_h2d": 3422552064,
+    "bytes_disk": 3422552064,
+    "prefetch_issued": 160,
+    "pred_total": 7920,
+    "pred_hits": 6633,
+    "pred_actual": 7920,
+    "t_moe": 17.34581360008451,
+    "t_cpu": 0.0,
+    "t_io_wait": 1.789518399804365,
+    "full_tokens": 0,
+    "full_fallbacks": 0,
+    "fast_hit_rate": 0.9829461069666604,
+    "hi_share": 0.0,
+    "need_hi_share": 0.0,
+    "skip_rate": 0.0,
+    "cpu_share": 0.0,
+    "disk_per_token": 1.6331738437001595,
+    "prefetch_recall": 0.8375,
+    "prefetch_precision": 0.8375
+   },
+   "quality": {
+    "kl": 0.049392593776717106,
+    "top1_agreement": 0.93359375,
+    "ppl_ref": 5.196891415296701,
+    "ppl": 5.375701430267766,
+    "dppl_pct": 3.440711007444741,
+    "positions": 256
+   },
+   "per_prompt": [
+    {
+     "prompt_tokens": 28,
+     "new_tokens": 64,
+     "ttft_s": 11.5904039000161,
+     "decode_tok_s": 24.605584388165646,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 23,
+     "new_tokens": 64,
+     "ttft_s": 0.7998460000089835,
+     "decode_tok_s": 108.68795408196807,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 29,
+     "new_tokens": 64,
+     "ttft_s": 0.8658989999967162,
+     "decode_tok_s": 114.00766168552805,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 28,
+     "new_tokens": 64,
+     "ttft_s": 0.7861084999749437,
+     "decode_tok_s": 113.89944295391331,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 22,
+     "new_tokens": 18,
+     "ttft_s": 0.7487668999820016,
+     "decode_tok_s": 115.11884580894308,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 27,
+     "new_tokens": 64,
+     "ttft_s": 0.7620258000097238,
+     "decode_tok_s": 115.64266639976772,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 33,
+     "new_tokens": 13,
+     "ttft_s": 0.7799551000061911,
+     "decode_tok_s": 117.23167005560356,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 30,
+     "new_tokens": 64,
+     "ttft_s": 0.8045179999899119,
+     "decode_tok_s": 115.31820011627275,
+     "cuda_graphs": true
+    }
+   ]
+  },
+  "hobbit@0.8": {
+   "policy": "hobbit(t1=0.8)",
+   "speed": {
+    "decode_tok_s": 18.94277840035402,
+    "ttft_s": 1.0069816000032006
+   },
+   "stats": {
+    "forwards": 412,
+    "tokens": 624,
+    "layer_calls": 6592,
+    "pairs": 79872,
+    "skipped": 0,
+    "requests": 58191,
+    "need_hi": 42359,
+    "miss_downgrades": 0,
+    "used_hi": 57388,
+    "fast_hits": 47808,
+    "prefetch_hits": 5610,
+    "fills": 10383,
+    "cpu_execs": 0,
+    "host_hits": 8934,
+    "disk_reads": 1625,
+    "bytes_h2d": 137727442944,
+    "bytes_disk": 9328852992,
+    "prefetch_issued": 11605,
+    "pred_total": 48472,
+    "pred_hits": 40852,
+    "pred_actual": 48472,
+    "t_moe": 28.292471598106204,
+    "t_cpu": 0.0,
+    "t_io_wait": 3.0321668996475637,
+    "full_tokens": 0,
+    "full_fallbacks": 0,
+    "fast_hit_rate": 0.821570345929783,
+    "hi_share": 0.9862006152154114,
+    "need_hi_share": 0.7279304359780722,
+    "skip_rate": 0.0,
+    "cpu_share": 0.0,
+    "disk_per_token": 2.6041666666666665,
+    "prefetch_recall": 0.8427958408978379,
+    "prefetch_precision": 0.8427958408978379
+   },
+   "quality": {
+    "kl": 0.006054058328823521,
+    "top1_agreement": 0.98046875,
+    "ppl_ref": 5.196891415296701,
+    "ppl": 5.151619014965519,
+    "dppl_pct": -0.871143857228307,
+    "positions": 256
+   },
+   "per_prompt": [
+    {
+     "prompt_tokens": 28,
+     "new_tokens": 64,
+     "ttft_s": 2.9373434000008274,
+     "decode_tok_s": 26.08130459701498,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 23,
+     "new_tokens": 64,
+     "ttft_s": 1.18599290002021,
+     "decode_tok_s": 23.97225713884085,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 29,
+     "new_tokens": 64,
+     "ttft_s": 0.9558041999989655,
+     "decode_tok_s": 18.316900218032018,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 28,
+     "new_tokens": 64,
+     "ttft_s": 0.9635308000142686,
+     "decode_tok_s": 23.23389948854964,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 22,
+     "new_tokens": 17,
+     "ttft_s": 0.8933356000052299,
+     "decode_tok_s": 15.51480769466005,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 27,
+     "new_tokens": 64,
+     "ttft_s": 1.000206700002309,
+     "decode_tok_s": 15.750046157746942,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 33,
+     "new_tokens": 13,
+     "ttft_s": 1.0137565000040922,
+     "decode_tok_s": 12.298648758823747,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 30,
+     "new_tokens": 62,
+     "ttft_s": 1.031493499991484,
+     "decode_tok_s": 19.56865658267602,
+     "cuda_graphs": true
+    }
+   ],
+   "accepted": false,
+   "reasons": [
+    "vitesse 18.94 vs 114.56 tok/s (< +3%)",
+    "TTFT 1.01 s vs 0.79 s (> +20%)",
+    "accord top-1 98.0% < 99%"
+   ]
+  }
+ }
+}

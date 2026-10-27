@@ -1,0 +1,97 @@
+{
+ "summary": {
+  "depart": {
+   "read_parts": 1,
+   "prefill_grouped": 0,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 1.84
+  },
+  "depart_reponse_type_s": 53.1,
+  "meilleur": {
+   "read_parts": 2,
+   "prefill_grouped": 0,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 1.84
+  },
+  "meilleur_reponse_type_s": 34.2,
+  "gain_pourcent": 35.7,
+  "essais": 2,
+  "gardes": [
+   {
+    "read_parts": 2
+   }
+  ],
+  "minutes": 6.2,
+  "rapport": ""
+ },
+ "journal": [
+  {
+   "essai": 0,
+   "changements": "départ",
+   "reponse_type_s": 53.1,
+   "tok_s": 4.29,
+   "premier_token_s": 6.58,
+   "kl": 0.0,
+   "verdict": "départ"
+  },
+  {
+   "essai": 1,
+   "changements": {
+    "read_parts": 2
+   },
+   "reponse_type_s": 34.2,
+   "tok_s": 7.06,
+   "premier_token_s": 5.85,
+   "kl": 0.0,
+   "verdict": "GARDÉ : +35.7 % (confirmé)"
+  },
+  {
+   "essai": 2,
+   "changements": {
+    "prefetch_depth": 2
+   },
+   "reponse_type_s": 44.3,
+   "tok_s": 5.2,
+   "premier_token_s": 5.91,
+   "kl": 0.0001,
+   "verdict": "pas mieux (-29.7 %, seuil 5 %)"
+  }
+ ],
+ "profil": {
+  "modele": "qwen3-next-80b-fp8",
+  "store_id": "65c05efbaf3c",
+  "date": "2026-10-05T12:20",
+  "reglages": {
+   "read_parts": 2,
+   "prefill_grouped": 0,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 1.84
+  },
+  "changes_par_rapport_au_depart": {
+   "read_parts": 2
+  },
+  "reponse_type_s": 34.2,
+  "depart_reponse_type_s": 53.1
+ }
+}

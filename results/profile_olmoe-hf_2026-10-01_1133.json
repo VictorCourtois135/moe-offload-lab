@@ -1,0 +1,379 @@
+{
+ "environment": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.0",
+  "torch": "2.14.0+cu130",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "cpu_threads": 12,
+  "ram_total_gib": 15.8,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "vram_total_gib": 6.0,
+  "transformers": "5.15.1",
+  "store": "C:\\moe-store\\olmoe",
+  "store_precisions": [
+   "fp16",
+   "int4"
+  ],
+  "fast_budget_gib": 2.98,
+  "host_budget_gib": 5.0,
+  "b_pcie_gbs": 12.58,
+  "b_host_gbs": 4.11,
+  "prefetch": true,
+  "qstar": true
+ },
+ "k": 8,
+ "micro": {
+  "launch_us": 19.225600000936538,
+  "sync_us": 20.693999977083877,
+  "floor_loop_gpu_ms": 1.7811566162109376,
+  "floor_loop_wall_ms": 1.7417235000175424,
+  "floor_bmm_gpu_ms": 0.34846446990966795,
+  "floor_bmm_wall_ms": 0.36710350002977066,
+  "vram_bandwidth_gbs": 288.8767857052825,
+  "dequant_int4_expert_gpu_ms": 0.5630379104614258,
+  "dequant_int4_expert_wall_ms": 0.5651070000021718,
+  "grouped_int4_v1_gpu_ms": 0.5277702331542968,
+  "grouped_int4_v1_gbs": 50.66350150176579,
+  "grouped_int4_v2_gpu_ms": 0.37584705352783204,
+  "grouped_int4_v2_gbs": 71.14247071786598,
+  "grouped_int4_v3_gpu_ms": 0.37176048278808593,
+  "grouped_int4_v3_gbs": 71.92450310874439,
+  "grouped_int4_v4_gpu_ms": 0.3855820846557617,
+  "grouped_int4_v4_gbs": 69.34629243438955,
+  "grouped_int4_v3_wall_ms": 0.3695134999725269,
+  "grouped_int4_auto_version": 2.0,
+  "grouped_int4_graph_wall_ms": 0.15273199998773634,
+  "grouped_int4_floor_ms": 0.09256087481975554,
+  "grouped_fp16_gpu_ms": 0.3850737762451172,
+  "grouped_fp16_gbs": 261.4130128038716
+ },
+ "decode": {
+  "lo / g2": {
+   "async": {
+    "ms_per_token": 11.333483333449598,
+    "moe_ms_per_token": 9.90953750169865,
+    "dense_ms_per_token": 1.423945831750947,
+    "moe_ms_per_layer": 0.6193460938561657,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.48477343754408747,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.03594388039118712,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.01448046848887922,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.005350520969689872,
+     "5 copies lanc\u00e9es + branche CPU": 0.00048736982686629443,
+     "6 attente disque/copies + calcul des manquants": 0.0759173177584671,
+     "7 prefetch": 0.0012197916134937259
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "sync": {
+    "ms_per_token": 14.975677083384653,
+    "moe_ms_per_token": 13.401029170684827,
+    "dense_ms_per_token": 1.5746479126998256,
+    "moe_ms_per_layer": 0.8375643231678017,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.18314908836221852,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.04865651053857315,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.025451432558535696,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.014931380197443408,
+     "5 copies lanc\u00e9es + branche CPU": 0.008413411270187984,
+     "6 attente disque/copies + calcul des manquants": 0.1848289063559605,
+     "7 prefetch": 0.011433333402995535
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "cuda_graphs": "CUDA graphs : 17 segments, 16 couches MoE entre eux, cache statique 2048 tokens"
+  },
+  "lo / g4": {
+   "async": {
+    "ms_per_token": 12.063868749767911,
+    "moe_ms_per_token": 10.619377082851619,
+    "dense_ms_per_token": 1.4444916669162922,
+    "moe_ms_per_layer": 0.6637110676782262,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.5342833334035882,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.034126432410630514,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.01498320294028114,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.005323567828933544,
+     "5 copies lanc\u00e9es + branche CPU": 0.0004908852133667096,
+     "6 attente disque/copies + calcul des manquants": 0.07226145851291221,
+     "7 prefetch": 0.0011588539526504367
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "sync": {
+    "ms_per_token": 15.627679166755115,
+    "moe_ms_per_token": 14.068606249566074,
+    "dense_ms_per_token": 1.5590729171890416,
+    "moe_ms_per_layer": 0.8792878905978796,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.17804453100704146,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.0477289065088371,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.025469530896771175,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.01495572936012953,
+     "5 copies lanc\u00e9es + branche CPU": 0.008394270973136978,
+     "6 attente disque/copies + calcul des manquants": 0.2313812497239572,
+     "7 prefetch": 0.010266536643636451
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "cuda_graphs": "CUDA graphs : 17 segments, 16 couches MoE entre eux, cache statique 2048 tokens"
+  },
+  "lo / defaut": {
+   "async": {
+    "ms_per_token": 11.222245833475123,
+    "moe_ms_per_token": 9.844620825788297,
+    "dense_ms_per_token": 1.3776250076868255,
+    "moe_ms_per_layer": 0.6152888016117686,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.4856437501151352,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.035121614359923115,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.014576822896591088,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.005120833407090686,
+     "5 copies lanc\u00e9es + branche CPU": 0.00048033859911811305,
+     "6 attente disque/copies + calcul des manquants": 0.07199687481336998,
+     "7 prefetch": 0.0011536461670402787
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "sync": {
+    "ms_per_token": 15.062118750089818,
+    "moe_ms_per_token": 13.476352087612517,
+    "dense_ms_per_token": 1.585766662477301,
+    "moe_ms_per_layer": 0.8422720054757823,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.18357942684588124,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.049153906691875214,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.025751822799217432,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.014906900844380289,
+     "5 copies lanc\u00e9es + branche CPU": 0.008326302255075765,
+     "6 attente disque/copies + calcul des manquants": 0.18755117143124758,
+     "7 prefetch": 0.010614453174184746
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "cuda_graphs": "CUDA graphs : 17 segments, 16 couches MoE entre eux, cache statique 2048 tokens"
+  },
+  "hobbit@0.8 / g2": {
+   "async": {
+    "ms_per_token": 125.99044374989414,
+    "moe_ms_per_token": 122.12330833335727,
+    "dense_ms_per_token": 3.8671354165368683,
+    "moe_ms_per_layer": 7.6327067708348295,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.5037384113203794,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.062474869973054105,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.03543632804318501,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.037283073027083447,
+     "5 copies lanc\u00e9es + branche CPU": 1.0155248698803614,
+     "6 attente disque/copies + calcul des manquants": 2.982543359109968,
+     "7 prefetch": 2.985798437729651
+    },
+    "fast_hit_rate": 0.77978515625,
+    "disk_per_token": 11.125
+   },
+   "sync": {
+    "ms_per_token": 246.71762708324727,
+    "moe_ms_per_token": 241.37369790969387,
+    "dense_ms_per_token": 5.343929173553391,
+    "moe_ms_per_layer": 15.085856119355867,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.2335970053006046,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.07528281245564965,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05082213520305837,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.05474492208653222,
+     "5 copies lanc\u00e9es + branche CPU": 1.6048092445165214,
+     "6 attente disque/copies + calcul des manquants": 9.410762239951964,
+     "7 prefetch": 3.27130690074758
+    },
+    "fast_hit_rate": 0.783203125,
+    "disk_per_token": 10.729166666666666
+   },
+   "cuda_graphs": "CUDA graphs : 17 segments, 16 couches MoE entre eux, cache statique 2048 tokens"
+  },
+  "hobbit@0.8 / g4": {
+   "async": {
+    "ms_per_token": 396.86959374982206,
+    "moe_ms_per_token": 393.9109291601805,
+    "dense_ms_per_token": 2.9586645896415575,
+    "moe_ms_per_layer": 24.61943307251128,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.6956205728556597,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.06016848965373356,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.03381354146843781,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.03591263022902543,
+     "5 copies lanc\u00e9es + branche CPU": 1.0225876302835484,
+     "6 attente disque/copies + calcul des manquants": 19.60950208340743,
+     "7 prefetch": 3.152603775940103
+    },
+    "fast_hit_rate": 0.7794596354166666,
+    "disk_per_token": 11.270833333333334
+   },
+   "sync": {
+    "ms_per_token": 126.29564791647378,
+    "moe_ms_per_token": 123.32688124752167,
+    "dense_ms_per_token": 2.9687666689521137,
+    "moe_ms_per_layer": 7.707930077970104,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.22278216115031077,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.07092005199638152,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.04765312515549643,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.051561718559393434,
+     "5 copies lanc\u00e9es + branche CPU": 1.5138330728253397,
+     "6 attente disque/copies + calcul des manquants": 2.5182645835949793,
+     "7 prefetch": 2.9642658851685155
+    },
+    "fast_hit_rate": 0.78173828125,
+    "disk_per_token": 10.9375
+   },
+   "cuda_graphs": "CUDA graphs : 17 segments, 16 couches MoE entre eux, cache statique 2048 tokens"
+  },
+  "hobbit@0.8 / defaut": {
+   "async": {
+    "ms_per_token": 117.81135416670925,
+    "moe_ms_per_token": 113.98093957905076,
+    "dense_ms_per_token": 3.8304145876584954,
+    "moe_ms_per_layer": 7.123808723690672,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.4887031249343939,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.06023997400461667,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.03519622369670591,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.037125651336585484,
+     "5 copies lanc\u00e9es + branche CPU": 1.0155031249799624,
+     "6 attente disque/copies + calcul des manquants": 2.5007674480548303,
+     "7 prefetch": 2.9774264320963084
+    },
+    "fast_hit_rate": 0.77978515625,
+    "disk_per_token": 11.166666666666666
+   },
+   "sync": {
+    "ms_per_token": 125.39276249996571,
+    "moe_ms_per_token": 122.40394791873162,
+    "dense_ms_per_token": 2.988814581234095,
+    "moe_ms_per_layer": 7.650246744920726,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.22785247358569904,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.07204986989487831,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.04910091123141077,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.05317382838635846,
+     "5 copies lanc\u00e9es + branche CPU": 1.5220169270264705,
+     "6 attente disque/copies + calcul des manquants": 2.4038651041375183,
+     "7 prefetch": 3.0014950522930426
+    },
+    "fast_hit_rate": 0.7833658854166666,
+    "disk_per_token": 10.729166666666666
+   },
+   "cuda_graphs": "CUDA graphs : 17 segments, 16 couches MoE entre eux, cache statique 2048 tokens"
+  }
+ },
+ "trace_variant": "defaut",
+ "launches_per_token": 51.0,
+ "graph_launches_per_token": 33.0,
+ "top_cpu": [
+  {
+   "op": "cudaMemcpyAsync",
+   "calls": 136,
+   "self_cpu_ms": 550.748199999999
+  },
+  {
+   "op": "cudaGraphLaunch",
+   "calls": 264,
+   "self_cpu_ms": 234.38469999999995
+  },
+  {
+   "op": "aten::_to_copy",
+   "calls": 384,
+   "self_cpu_ms": 131.1453599999977
+  },
+  {
+   "op": "aten::to",
+   "calls": 384,
+   "self_cpu_ms": 105.42168800000177
+  },
+  {
+   "op": "cudaLaunchKernel",
+   "calls": 408,
+   "self_cpu_ms": 40.52769999999952
+  },
+  {
+   "op": "aten::embedding",
+   "calls": 8,
+   "self_cpu_ms": 23.387019999999524
+  },
+  {
+   "op": "aten::copy_",
+   "calls": 392,
+   "self_cpu_ms": 4.633947000000276
+  },
+  {
+   "op": "aten::empty_strided",
+   "calls": 384,
+   "self_cpu_ms": 2.586455000000715
+  },
+  {
+   "op": "aten::cat",
+   "calls": 128,
+   "self_cpu_ms": 2.5482210000000194
+  },
+  {
+   "op": "aten::view",
+   "calls": 416,
+   "self_cpu_ms": 1.9485659999983036
+  },
+  {
+   "op": "Activity Buffer Request",
+   "calls": 1,
+   "self_cpu_ms": 1.7078999999999942
+  },
+  {
+   "op": "aten::index_select",
+   "calls": 8,
+   "self_cpu_ms": 1.5785120000006574
+  },
+  {
+   "op": "aten::reshape",
+   "calls": 400,
+   "self_cpu_ms": 0.9329870000044175
+  },
+  {
+   "op": "cudaDeviceSynchronize",
+   "calls": 2,
+   "self_cpu_ms": 0.5849000000001398
+  },
+  {
+   "op": "cudaStreamSynchronize",
+   "calls": 128,
+   "self_cpu_ms": 0.5698000000013271
+  },
+  {
+   "op": "aten::mm",
+   "calls": 8,
+   "self_cpu_ms": 0.4846890000003623
+  },
+  {
+   "op": "aten::resize_",
+   "calls": 8,
+   "self_cpu_ms": 0.2851939999999013
+  },
+  {
+   "op": "aten::argmax",
+   "calls": 8,
+   "self_cpu_ms": 0.19509700000018346
+  },
+  {
+   "op": "cudaStreamIsCapturing",
+   "calls": 128,
+   "self_cpu_ms": 0.124600000000617
+  },
+  {
+   "op": "aten::matmul",
+   "calls": 8,
+   "self_cpu_ms": 0.10409800000011456
+  }
+ ]
+}

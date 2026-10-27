@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>moelab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="shell">
+  <nav class="side" aria-label="Écrans">
+    <div class="brand">moelab</div>
+    <a href="#chat" data-screen="chat">Chat</a>
+    <a href="#agents" data-screen="agents">Agents</a>
+    <a href="#setup" data-screen="setup">Mise en route</a>
+    <a href="#autopilot" data-screen="autopilot">Autopilot</a>
+    <a href="#tools" data-screen="tools">Outils et MCP</a>
+    <a href="#engine" data-screen="engine">Moteur</a>
+    <a href="#tasks" data-screen="tasks">Tâches <span id="queue-badge" class="badge" hidden></span></a>
+
+    <section class="strip" aria-label="État du moteur">
+      <div id="strip-model" class="strip-model">Aucun modèle chargé</div>
+      <div class="tier vram"><span>VRAM</span><div class="bar"><i id="bar-vram"></i></div><b id="val-vram">–</b></div>
+      <div class="tier ram"><span>RAM</span><div class="bar"><i id="bar-ram"></i></div><b id="val-ram">–</b></div>
+      <div class="tier disk"><span>Disque</span><div class="bar"><i id="bar-disk"></i></div><b id="val-disk">–</b></div>
+      <div id="strip-busy" class="strip-busy"></div>
+    </section>
+  </nav>
+
+  <main id="main">
+    <!-- Chat -->
+    <section class="screen" id="screen-chat">
+      <div class="chat">
+        <aside class="convs">
+          <button class="primary wide" id="new-conv">Nouvelle conversation</button>
+          <label class="check"><input type="checkbox" id="new-conv-tools"> avec outils</label>
+          <ul id="conv-list"></ul>
+        </aside>
+        <div class="thread-wrap">
+          <header class="thread-head">
+            <h1 id="conv-title">Conversation</h1>
+            <label class="check" id="conv-tools-wrap" hidden><input type="checkbox" id="conv-tools"> outils</label>
+          </header>
+          <div id="thread" class="thread" aria-live="polite"></div>
+          <form id="composer" class="composer">
+            <textarea id="msg" rows="2" placeholder="Écris ton message (Entrée pour envoyer, Maj+Entrée pour aller à la ligne)"></textarea>
+            <button class="primary" id="send" type="submit">Envoyer</button>
+            <button id="stop" type="button" hidden>Arrêter</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agents -->
+    <section class="screen" id="screen-agents" hidden>
+      <h1>Agents</h1>
+      <p class="lead">Donne un objectif : l'orchestrateur crée ses agents, leur confie le travail et assemble la réponse. Les agents parlent l'un après l'autre sur le même modèle ; compte 10 à 30 minutes pour un objectif à plusieurs étapes. Tes messages de chat passent entre deux tours.</p>
+      <div class="agents-layout">
+        <div class="agents-side">
+          <div id="ag-nofolder" class="approval" hidden>Aucun dossier autorisé : les agents ne pourront lire ni écrire aucun fichier. Ajoute le dossier de ton objectif dans <a href="#tools">Outils et MCP</a>, puis « Enregistrer les dossiers ».</div>
+          <form id="ag-form" class="form">
+            <label>Objectif <textarea id="ag-goal" rows="5" required placeholder="Ex. : lis les PDF de C:\Users\Home\Documents\cours, fais une fiche de révision par chapitre et écris-la dans fiches.md"></textarea></label>
+            <details class="panel tight">
+              <summary>Outils permis aux agents</summary>
+              <p class="hint">Les permissions de l'écran Outils et MCP s'appliquent toujours (« demander » = ton accord à chaque appel).</p>
+              <div id="ag-tools" class="tool-checks"></div>
+            </details>
+            <details class="panel tight">
+              <summary>Contrôle de la réponse</summary>
+              <div class="form">
+                <label class="check"><input type="checkbox" id="ag-criteria" checked> Critères de réussite au départ (~1 min)</label>
+                <label>Attendre que je les valide (secondes, 0 = non) <input type="number" id="ag-wait" value="90" min="0" max="900"></label>
+                <label>Vérification finale (une fois, ~1 à 3 min)
+                  <select id="ag-verify"><option value="auto">automatique (si faits à vérifier)</option><option value="toujours">toujours</option><option value="jamais">jamais</option></select></label>
+              </div>
+            </details>
+            <details class="panel tight">
+              <summary>Limites</summary>
+              <div class="form row">
+                <label>Agents <input type="number" id="ag-max-agents" value="5" min="1" max="10"></label>
+                <label>Tours de l'orchestrateur <input type="number" id="ag-max-steps" value="14" min="2" max="40"></label>
+                <label>Tours par tâche <input type="number" id="ag-sub-steps" value="10" min="2" max="20"></label>
+                <label>Minutes au plus <input type="number" id="ag-minutes" value="60" min="5" max="480"></label>
+              </div>
+            </details>
+            <button class="primary" type="submit" id="ag-go">Lancer l'orchestrateur</button>
+          </form>
+
+          <h2>Agents enregistrés</h2>
+          <p class="hint">L'orchestrateur peut leur confier une tâche sans les recréer.</p>
+          <ul id="ag-library" class="ag-list"></ul>
+          <details class="panel tight" id="ag-edit">
+            <summary>Créer un agent</summary>
+            <div class="form">
+              <label>Nom <input id="ae-name" placeholder="redacteur"></label>
+              <label>Rôle <textarea id="ae-role" rows="4" placeholder="Ce qu'il sait faire, comment il travaille, le format de son compte rendu."></textarea></label>
+              <div id="ae-tools" class="tool-checks"></div>
+              <button id="ae-save" type="button">Enregistrer l'agent</button>
+            </div>
+          </details>
+
+          <h2>Leçons</h2>
+          <p class="hint">Tirées de tes corrections ; données aux prochains runs dont l'objectif est proche.</p>
+          <ul id="ag-lessons" class="ag-list"></ul>
+          <details class="panel tight">
+            <summary>Ajouter une leçon</summary>
+            <div class="form">
+              <textarea id="al-text" rows="3" placeholder="Ex. : « les dernières versions » = les plus récentes publiées à la date du jour ; vérifier la liste complète des releases."></textarea>
+              <button id="al-save" type="button">Enregistrer la leçon</button>
+            </div>
+          </details>
+
+          <h2>Runs précédents</h2>
+          <ul id="ag-runs" class="ag-list"></ul>
+        </div>
+
+        <div class="agents-main">
+          <div id="ag-view" class="ag-view">
+            <p class="empty">Le déroulé d'un run s'affiche ici : ce que pense l'orchestrateur, les agents qu'il crée, chaque tâche confiée avec les outils utilisés et le compte rendu.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mise en route -->
+    <section class="screen" id="screen-setup" hidden>
+      <h1>Mise en route</h1>
+      <p class="lead">Choisis un modèle : moelab vérifie la place, le télécharge, construit le store et mesure ton disque. Ensuite, charge-le et lance l'autopilot.</p>
+      <div class="cols">
+        <div>
+          <h2>Ta machine</h2>
+          <div id="machine" class="panel"></div>
+          <h2>Bibliothèque</h2>
+          <div id="library"></div>
+          <details class="panel">
+            <summary>Ajouter un store déjà construit</summary>
+            <div class="form">
+              <label>Dossier du store <input id="add-store" placeholder="C:\moe-store\qwen3-next"></label>
+              <label>Checkpoint (si le store n'est pas autonome) <input id="add-ckpt" placeholder="D:\models\qwen3-next-80b-fp8"></label>
+              <button id="add-btn">Ajouter</button>
+            </div>
+          </details>
+        </div>
+        <div>
+          <h2>Installer un modèle</h2>
+          <div id="catalog" class="catalog"></div>
+          <div id="plan" class="panel" hidden></div>
+          <div id="install" class="panel" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Autopilot -->
+    <section class="screen" id="screen-autopilot" hidden>
+      <h1>Autopilot</h1>
+      <p class="lead">Le modèle optimise son propre moteur pour ce PC. Le code mesure et décide ; il ne garde un réglage que s'il gagne au-delà du bruit, sans perte de qualité. Le moteur lui est réservé pendant le run (20 à 40 minutes).</p>
+      <form id="ap-form" class="form row">
+        <label>Essais <input type="number" id="ap-trials" value="12" min="1" max="30"></label>
+        <label>Minutes au plus <input type="number" id="ap-minutes" value="60" min="5"></label>
+        <label>Départ <select id="ap-start"><option value="actuel">réglages actuels</option><option value="02-10">épreuve : réglages du 02/10</option></select></label>
+        <label class="check"><input type="checkbox" id="ap-blind"> à l'aveugle</label>
+        <button class="primary" type="submit" id="ap-go">Optimiser</button>
+        <button type="button" id="ap-stop" hidden>Arrêter</button>
+      </form>
+      <div class="cols">
+        <div>
+          <h2>Réponse type (1er token + 200 tokens), par essai</h2>
+          <div id="ap-chart" class="chart panel"></div>
+          <h2>Journal</h2>
+          <div class="table-wrap"><table id="ap-journal"><thead><tr><th>Essai</th><th>Changement</th><th>Réponse type</th><th>tok/s</th><th>1er token</th><th>Verdict</th></tr></thead><tbody></tbody></table></div>
+        </div>
+        <div>
+          <h2>Ce que pense le modèle</h2>
+          <div id="ap-thoughts" class="thoughts panel"><p class="empty">Pendant un run, le raisonnement du modèle et ses appels d'outils s'affichent ici.</p></div>
+          <h2>Rapports</h2>
+          <ul id="ap-reports" class="plain"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outils et MCP -->
+    <section class="screen" id="screen-tools" hidden>
+      <h1>Outils et MCP</h1>
+      <p class="lead">Les outils que le modèle peut appeler dans les conversations « avec outils ». « Demander » : tu valides chaque appel.</p>
+      <div class="cols">
+        <div>
+          <h2>Outils</h2>
+          <div class="table-wrap"><table id="tools-table"><thead><tr><th>Outil</th><th>Ce qu'il fait</th><th>Permission</th></tr></thead><tbody></tbody></table></div>
+          <h2>Dossiers autorisés</h2>
+          <p class="hint">Un par ligne. Les outils de fichiers ne voient rien d'autre.</p>
+          <textarea id="folders" rows="4"></textarea>
+          <button id="folders-save">Enregistrer les dossiers</button>
+        </div>
+        <div>
+          <h2>Serveurs MCP branchés</h2>
+          <p class="hint">Lancés par moelab ; leurs outils apparaissent à gauche (« serveur__outil »).</p>
+          <div id="mcp-list"></div>
+          <button id="mcp-add">Ajouter un serveur</button>
+          <button class="primary" id="mcp-save">Enregistrer et connecter</button>
+          <div id="mcp-msg" class="hint"></div>
+          <h2>moelab comme serveur MCP</h2>
+          <label class="check"><input type="checkbox" id="expose"> Laisser d'autres applications utiliser le modèle local (Claude Desktop, VS Code…)</label>
+          <div id="expose-info" class="panel" hidden></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Moteur -->
+    <section class="screen" id="screen-engine" hidden>
+      <h1>Moteur</h1>
+      <div id="engine-top" class="engine-top"></div>
+      <h2>Réglages</h2>
+      <p class="hint">Les réglages « à chaud » s'appliquent tout de suite ; les autres demandent de recharger le modèle (Mise en route).</p>
+      <div id="options"></div>
+    </section>
+
+    <!-- Tâches -->
+    <section class="screen" id="screen-tasks" hidden>
+      <h1>Tâches</h1>
+      <p class="lead">Un seul modèle tient en mémoire : tout passe par une file d'attente. Le chat passe en premier ; une tâche de fond laisse passer tes messages entre deux fichiers.</p>
+      <div class="cols">
+        <div>
+          <h2>File d'attente</h2>
+          <ul id="jobs" class="jobs"></ul>
+        </div>
+        <div>
+          <h2>Nouvelle tâche de fond</h2>
+          <form id="batch" class="form">
+            <label>Dossier <input id="b-folder" required placeholder="C:\Users\Home\Documents\factures"></label>
+            <label>Fichiers <input id="b-pattern" value="*.txt;*.md;*.pdf"></label>
+            <label>Instruction <textarea id="b-instr" rows="3" required placeholder="Résume ce document en 5 lignes."></textarea></label>
+            <label>Résultat (fichier Markdown) <input id="b-out" required placeholder="C:\Users\Home\Documents\resumes.md"></label>
+            <button class="primary" type="submit">Lancer la tâche</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

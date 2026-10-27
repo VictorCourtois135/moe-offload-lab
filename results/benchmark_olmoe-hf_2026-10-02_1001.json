@@ -1,0 +1,226 @@
+{
+ "date": "2026-10-02_1001",
+ "model": "D:\\models\\olmoe-hf",
+ "args": {
+  "model": "D:\\models\\olmoe-hf",
+  "store": "C:\\moe-store\\olmoe-i8",
+  "dense": "auto",
+  "dtype": "float16",
+  "vram_gb": null,
+  "ram_gb": 5.0,
+  "vram_reserve_gb": 1.0,
+  "ram_reserve_gb": 3.0,
+  "preload_lo": "auto",
+  "dense_int8": false,
+  "no_prefetch": false,
+  "no_qstar": false,
+  "usage": null,
+  "no_fast_decode": false,
+  "no_prefetch_adaptive": false,
+  "prefetch_depth": 1,
+  "no_direct_io": false,
+  "no_sort_reads": false,
+  "io_workers": null,
+  "int4_unpacked": false,
+  "no_triton": false,
+  "no_grouped": false,
+  "no_cuda_graphs": false,
+  "graph_max_len": 2048,
+  "hot_store": null,
+  "configs": "hobbit@0.8",
+  "t1": 0.6,
+  "miss_t1_bench": 0.3,
+  "max_new_tokens": 64,
+  "prompts": 8,
+  "eval_tokens": 0,
+  "repeats": 2,
+  "save_ref": null,
+  "ref": null,
+  "quality_mode": "decode",
+  "out": "C:\\Users\\Home\\becode_projects\\moe-offload-lab\\results",
+  "policy": "hi",
+  "t2": null,
+  "protect": "",
+  "hi_vote": 0.5
+ },
+ "environment": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.0",
+  "torch": "2.14.0+cu130",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "cpu_threads": 12,
+  "ram_total_gib": 15.8,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "vram_total_gib": 6.0,
+  "transformers": "5.15.1",
+  "store": "C:\\moe-store\\olmoe-i8",
+  "store_precisions": [
+   "int8",
+   "int4"
+  ],
+  "fast_budget_gib": 2.98,
+  "host_budget_gib": 5.0,
+  "b_pcie_gbs": 12.58,
+  "b_host_gbs": 1.23,
+  "prefetch": true,
+  "qstar": true
+ },
+ "results": {
+  "hobbit@0.8": {
+   "policy": "hobbit(t1=0.8)",
+   "speed": {
+    "decode_tok_s": 26.081924124191517,
+    "ttft_s": 0.753460649997578
+   },
+   "stats": {
+    "forwards": 412,
+    "tokens": 624,
+    "layer_calls": 6592,
+    "pairs": 79872,
+    "skipped": 0,
+    "requests": 58192,
+    "need_hi": 42347,
+    "miss_downgrades": 0,
+    "used_hi": 57389,
+    "fast_hits": 45621,
+    "prefetch_hits": 7068,
+    "fills": 12571,
+    "cpu_execs": 0,
+    "host_hits": 11128,
+    "disk_reads": 1639,
+    "bytes_h2d": 171530256384,
+    "bytes_disk": 9407102976,
+    "prefetch_issued": 14658,
+    "pred_total": 48480,
+    "pred_hits": 40770,
+    "pred_actual": 48480,
+    "t_moe": 20.521245599986287,
+    "t_cpu": 0.0,
+    "t_io_wait": 2.4001890003564768,
+    "fast_hit_rate": 0.7839737420951334,
+    "hi_share": 0.9862008523508387,
+    "need_hi_share": 0.7277117129502337,
+    "skip_rate": 0.0,
+    "cpu_share": 0.0,
+    "disk_per_token": 2.6266025641025643,
+    "prefetch_recall": 0.8409653465346535,
+    "prefetch_precision": 0.8409653465346535
+   },
+   "quality": null,
+   "per_prompt": [
+    {
+     "prompt_tokens": 28,
+     "new_tokens": 64,
+     "ttft_s": 9.258681999985129,
+     "decode_tok_s": 26.840194004164886,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 23,
+     "new_tokens": 64,
+     "ttft_s": 0.9319862000120338,
+     "decode_tok_s": 29.54558743552496,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 29,
+     "new_tokens": 64,
+     "ttft_s": 0.7167016000021249,
+     "decode_tok_s": 25.691570459121294,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 28,
+     "new_tokens": 64,
+     "ttft_s": 0.8576668000023346,
+     "decode_tok_s": 31.522515642987937,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 22,
+     "new_tokens": 17,
+     "ttft_s": 0.6760003000090364,
+     "decode_tok_s": 22.663118931739298,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 27,
+     "new_tokens": 64,
+     "ttft_s": 0.7419175000104588,
+     "decode_tok_s": 22.669968730378667,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 33,
+     "new_tokens": 13,
+     "ttft_s": 0.7550786999927368,
+     "decode_tok_s": 19.521111638908454,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 30,
+     "new_tokens": 62,
+     "ttft_s": 0.7593972999893595,
+     "decode_tok_s": 26.472277789261735,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 28,
+     "new_tokens": 64,
+     "ttft_s": 2.198978400003398,
+     "decode_tok_s": 28.96907247831012,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 23,
+     "new_tokens": 64,
+     "ttft_s": 0.8741078000166453,
+     "decode_tok_s": 30.093289196532847,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 29,
+     "new_tokens": 64,
+     "ttft_s": 0.7518426000024192,
+     "decode_tok_s": 25.526628761766784,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 28,
+     "new_tokens": 64,
+     "ttft_s": 0.7248455999942962,
+     "decode_tok_s": 31.454666190466003,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 22,
+     "new_tokens": 17,
+     "ttft_s": 0.6806914999906439,
+     "decode_tok_s": 22.846796087412386,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 27,
+     "new_tokens": 64,
+     "ttft_s": 0.7298597999906633,
+     "decode_tok_s": 22.859398879474163,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 33,
+     "new_tokens": 13,
+     "ttft_s": 0.7851276000146754,
+     "decode_tok_s": 19.654642909021884,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 30,
+     "new_tokens": 62,
+     "ttft_s": 0.7386032000067644,
+     "decode_tok_s": 26.49432052313253,
+     "cuda_graphs": true
+    }
+   ]
+  }
+ }
+}

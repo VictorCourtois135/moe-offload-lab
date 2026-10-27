@@ -1,6 +1,10 @@
 """
 Scoring d'importance des experts, inspiré de HOBBIT (Tang et al., 2024, arXiv:2411.01433).
 
+Script pédagogique de l'étape 7 (première brique du projet). La version utilisée par
+le système final est `moelab.policy.PrecisionPolicy`, qui ajoute la normalisation des
+scores faite par HOBBIT (voir docs/06-comprendre-le-scoring-hobbit.md).
+
 Principe : l'expert e_i contribue à la sortie via G(x)_ei * E_ei(x). Calculer la
 sortie complète E_ei(x) est coûteux -- HOBBIT montre que la sortie du routeur seule
 (||G(x)_ei||) est un proxy suffisant (corrélation de Pearson mesurée à 0.99 dans le
@@ -17,18 +21,23 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-def compute_hobbit_importance(router_scores: torch.Tensor) -> torch.Tensor:
+def compute_hobbit_importance(router_scores: torch.Tensor, normalize: bool = True) -> torch.Tensor:
     """
-    router_scores: tensor de shape (top_k,), scores normalisés d'UN SEUL token,
-                   DÉJÀ TRIÉS par ordre décroissant (c'est ce que retourne
-                   torch.topk, utilisé en interne par le routeur MoE).
+    router_scores: tensor de shape (top_k,), scores d'UN SEUL token, DÉJÀ TRIÉS par
+                   ordre décroissant (c'est ce que retourne torch.topk, utilisé en
+                   interne par le routeur MoE).
+    normalize: HOBBIT normalise les scores pour qu'ils somment à 1 avant le cumsum.
+               OLMoE a norm_topk_prob=False, donc sans normalisation les seuils
+               T1/T2 du papier n'ont pas le même sens.
 
     Retourne : tensor de shape (top_k,), le score d'"unimportance" de chaque
-               expert sélectionné. index 0 (l'expert le mieux classé) vaut
-               toujours 0 -- HOBBIT le traite comme systématiquement important.
+               expert sélectionné. L'index 0 vaut toujours 0.
     """
-    cumulative = torch.cumsum(router_scores, dim=0)
-    unimportance = cumulative - router_scores
+    scores = router_scores.float()
+    if normalize:
+        scores = scores / scores.sum()
+    cumulative = torch.cumsum(scores, dim=0)
+    unimportance = cumulative - scores
     unimportance[0] = 0.0
     return unimportance
 
@@ -38,14 +47,9 @@ def capture_router_output(model, layer_idx: int, inputs: dict) -> dict:
     Exécute un passage complet du modèle et capture, via un forward hook, les
     scores et indices réels du routeur MoE à la couche `layer_idx`.
 
-    Important : il faut passer par un vrai passage complet du modèle (embedding
-    -> attention -> normalisation -> routeur), pas reconstruire le calcul à la
-    main -- un test initial en sautant l'attention a produit une distribution
-    quasi uniforme sur les experts, symptomatique d'un signal non enrichi par
-    le contexte de la séquence (voir CHANGELOG.md, entrée du 2026-08-21).
-
-    Retourne un dict {'scores': ..., 'indices': ...} pour le premier token
-    de la séquence.
+    Il faut passer par un vrai passage complet (embedding -> attention ->
+    normalisation -> routeur) : un test initial qui sautait l'attention donnait une
+    distribution quasi uniforme sur les experts.
     """
     captured = {}
 
@@ -78,8 +82,8 @@ if __name__ == "__main__":
 
     scores = captured['scores'][0]
     indices = captured['indices'][0]
-    importance = compute_hobbit_importance(scores)
 
-    print("Experts sélectionnés :", indices)
-    print("Scores du routeur    :", scores)
-    print("Unimportance HOBBIT  :", importance)
+    print("Experts sélectionnés       :", indices)
+    print("Scores du routeur          :", scores)
+    print("Unimportance (brute)       :", compute_hobbit_importance(scores, normalize=False))
+    print("Unimportance (normalisée)  :", compute_hobbit_importance(scores, normalize=True))

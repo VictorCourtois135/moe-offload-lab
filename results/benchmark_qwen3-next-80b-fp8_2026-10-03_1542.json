@@ -1,0 +1,177 @@
+{
+ "date": "2026-10-03_1542",
+ "model": "D:\\models\\qwen3-next-80b-fp8",
+ "args": {
+  "model": "D:\\models\\qwen3-next-80b-fp8",
+  "store": "C:\\moe-store\\qwen3-next",
+  "dense": "auto",
+  "dtype": "float16",
+  "vram_gb": null,
+  "ram_gb": 5.0,
+  "vram_reserve_gb": null,
+  "ram_reserve_gb": 3.0,
+  "preload_lo": "auto",
+  "dense_int8": true,
+  "no_prefetch": false,
+  "no_qstar": false,
+  "usage": null,
+  "no_fast_decode": false,
+  "no_prefetch_adaptive": false,
+  "prefetch_depth": 1,
+  "prefetch_disk_ahead": 0,
+  "no_direct_io": false,
+  "no_sort_reads": false,
+  "io_workers": null,
+  "read_parts": null,
+  "int4_unpacked": false,
+  "no_triton": false,
+  "no_grouped": false,
+  "no_cuda_graphs": false,
+  "graph_max_len": null,
+  "hot_store": null,
+  "no_full_graph": false,
+  "cache_eviction": "lrfu",
+  "prefetch_mass": null,
+  "configs": "lo",
+  "t1": 0.6,
+  "miss_t1_bench": 0.3,
+  "max_new_tokens": 64,
+  "prompts": 8,
+  "eval_tokens": 0,
+  "repeats": 1,
+  "save_ref": null,
+  "ref": null,
+  "quality_mode": "decode",
+  "out": "C:\\Users\\Home\\becode_projects\\moe-offload-lab\\results",
+  "policy": "hi",
+  "t2": null,
+  "protect": "",
+  "hi_vote": 0.5
+ },
+ "environment": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.0",
+  "torch": "2.14.0+cu130",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "cpu_threads": 12,
+  "ram_total_gib": 15.8,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "vram_total_gib": 6.0,
+  "transformers": "5.15.1",
+  "store": "C:\\moe-store\\qwen3-next",
+  "store_precisions": [
+   "int4"
+  ],
+  "fast_budget_gib": 2.11,
+  "host_budget_gib": 5.0,
+  "b_pcie_gbs": 12.53,
+  "b_host_gbs": 0.38,
+  "prefetch": true,
+  "qstar": true
+ },
+ "results": {
+  "lo": {
+   "policy": "lo",
+   "speed": {
+    "decode_tok_s": 6.759310609374895,
+    "ttft_s": 6.714548449992435
+   },
+   "stats": {
+    "forwards": 411,
+    "tokens": 573,
+    "layer_calls": 19728,
+    "pairs": 275040,
+    "skipped": 0,
+    "requests": 223376,
+    "need_hi": 0,
+    "miss_downgrades": 0,
+    "used_hi": 0,
+    "fast_hits": 132830,
+    "prefetch_hits": 40701,
+    "fills": 90546,
+    "cpu_execs": 0,
+    "host_hits": 30871,
+    "disk_reads": 68291,
+    "bytes_h2d": 261352292352,
+    "bytes_disk": 114125733888,
+    "prefetch_issued": 101572,
+    "pred_total": 189410,
+    "pred_hits": 161848,
+    "pred_actual": 189410,
+    "t_moe": 104.84103499801131,
+    "t_cpu": 0.0,
+    "t_io_wait": 10.978916307154577,
+    "disk_ahead": 0,
+    "full_tokens": 0,
+    "full_fallbacks": 0,
+    "fast_hit_rate": 0.5946475897142038,
+    "hi_share": 0.0,
+    "need_hi_share": 0.0,
+    "skip_rate": 0.0,
+    "cpu_share": 0.0,
+    "disk_per_token": 119.18150087260035,
+    "prefetch_recall": 0.8544849796737237,
+    "prefetch_precision": 0.8544849796737237
+   },
+   "quality": null,
+   "per_prompt": [
+    {
+     "prompt_tokens": 21,
+     "new_tokens": 57,
+     "ttft_s": 24.06541959999595,
+     "decode_tok_s": 9.337597457568659,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 17,
+     "new_tokens": 64,
+     "ttft_s": 5.894805000047199,
+     "decode_tok_s": 8.186600729113898,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 22,
+     "new_tokens": 64,
+     "ttft_s": 6.58877809997648,
+     "decode_tok_s": 6.8562315913002605,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 22,
+     "new_tokens": 64,
+     "ttft_s": 6.379926799971145,
+     "decode_tok_s": 7.173237041297779,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 17,
+     "new_tokens": 21,
+     "ttft_s": 6.629592299985234,
+     "decode_tok_s": 5.445111343282931,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 22,
+     "new_tokens": 64,
+     "ttft_s": 6.799504599999636,
+     "decode_tok_s": 6.66238962744953,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 26,
+     "new_tokens": 13,
+     "ttft_s": 7.363117499975488,
+     "decode_tok_s": 4.811380331705664,
+     "cuda_graphs": true
+    },
+    {
+     "prompt_tokens": 23,
+     "new_tokens": 64,
+     "ttft_s": 7.902687399997376,
+     "decode_tok_s": 6.599599689567139,
+     "cuda_graphs": true
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,192 @@
+{
+ "summary": {
+  "depart": {
+   "read_parts": 4,
+   "prefill_grouped": 192,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 2.105
+  },
+  "depart_reponse_type_s": 32.8,
+  "meilleur": {
+   "read_parts": 4,
+   "prefill_grouped": 192,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 2.105
+  },
+  "meilleur_reponse_type_s": 32.8,
+  "gain_pourcent": 0.0,
+  "essais": 11,
+  "gardes": [],
+  "relances": 0,
+  "verification_finale": {},
+  "minutes": 19.8,
+  "rapport": "Meilleure configuration conservée : read_parts=4, prefill_grouped=192, prefetch=true, cache_eviction=lrfu, full_graph=true, ram_gb=5.0, vram_gb=2.105. Tous les autres réglages testés ont dégradé les performances. Pas d'amélioration possible avec les 12 essais."
+ },
+ "journal": [
+  {
+   "essai": 0,
+   "changements": "départ",
+   "reponse_type_s": 32.8,
+   "tok_s": 6.94,
+   "premier_token_s": 3.95,
+   "kl": 0.0,
+   "verdict": "départ"
+  },
+  {
+   "essai": 1,
+   "changements": {
+    "read_parts": 8
+   },
+   "reponse_type_s": 36.0,
+   "tok_s": 6.26,
+   "premier_token_s": 4.07,
+   "kl": 0.0001,
+   "verdict": "pas mieux (réponse type -12.1 %, 1er token -5.4 %, tok/s -11.7 %, meilleure config remesurée à côté)"
+  },
+  {
+   "essai": 2,
+   "changements": {
+    "prefetch_disk_ahead": 1
+   },
+   "reponse_type_s": 33.1,
+   "tok_s": 6.85,
+   "premier_token_s": 3.88,
+   "kl": 0.0002,
+   "verdict": "pas mieux (réponse type -3.1 %, 1er token -0.5 %, tok/s -3.4 %)"
+  },
+  {
+   "essai": 3,
+   "changements": {
+    "prefill_skip": 0.02
+   },
+   "reponse_type_s": 32.1,
+   "tok_s": 7.08,
+   "premier_token_s": 3.86,
+   "kl": 0.0001,
+   "verdict": "pas mieux (réponse type +0.0 %, 1er token +0.0 %, tok/s -0.1 %)"
+  },
+  {
+   "essai": 4,
+   "changements": {
+    "vram_gb": 1.96
+   },
+   "reponse_type_s": 33.0,
+   "tok_s": 6.87,
+   "premier_token_s": 3.93,
+   "kl": 0.0002,
+   "verdict": "pas mieux (réponse type -2.8 %, 1er token -1.8 %, tok/s -3.1 %)"
+  },
+  {
+   "essai": 5,
+   "changements": {
+    "prefetch": false
+   },
+   "reponse_type_s": 33.4,
+   "tok_s": 6.77,
+   "premier_token_s": 3.89,
+   "kl": 0.0,
+   "verdict": "pas mieux (réponse type -4.0 %, 1er token -0.8 %, tok/s -4.5 %)"
+  },
+  {
+   "essai": 6,
+   "changements": {
+    "full_graph": false
+   },
+   "reponse_type_s": 32.9,
+   "tok_s": 6.92,
+   "premier_token_s": 3.99,
+   "kl": 0.0001,
+   "verdict": "pas mieux (réponse type -2.5 %, 1er token -3.4 %, tok/s -2.4 %)"
+  },
+  {
+   "essai": 7,
+   "changements": {
+    "cache_eviction": "stale"
+   },
+   "reponse_type_s": 72.1,
+   "tok_s": 3.05,
+   "premier_token_s": 6.64,
+   "kl": 0.0001,
+   "verdict": "pas mieux (réponse type -125.3 %, 1er token -72.0 %, tok/s -57.1 %, meilleure config remesurée à côté)"
+  },
+  {
+   "essai": 8,
+   "changements": {
+    "prefetch_depth": 2
+   },
+   "reponse_type_s": 43.5,
+   "tok_s": 5.05,
+   "premier_token_s": 3.9,
+   "kl": 0.0,
+   "verdict": "pas mieux (réponse type -34.7 %, 1er token -2.1 %, tok/s -28.2 %, meilleure config remesurée à côté)"
+  },
+  {
+   "essai": 9,
+   "changements": {
+    "ram_gb": 5.5
+   },
+   "reponse_type_s": 31.9,
+   "tok_s": 7.15,
+   "premier_token_s": 3.94,
+   "kl": 0.0001,
+   "verdict": "pas mieux (réponse type +1.2 %, 1er token -3.1 %, tok/s +1.7 %)"
+  },
+  {
+   "essai": 10,
+   "changements": {
+    "prefill_grouped": 256
+   },
+   "reponse_type_s": 33.0,
+   "tok_s": 6.91,
+   "premier_token_s": 4.03,
+   "kl": 0.0001,
+   "verdict": "pas mieux (réponse type -2.2 %, 1er token -5.5 %, tok/s -1.7 %)"
+  },
+  {
+   "essai": 11,
+   "changements": {
+    "prefetch_mass": 0.8
+   },
+   "reponse_type_s": 53.9,
+   "tok_s": 4.01,
+   "premier_token_s": 4.03,
+   "kl": 0.0002,
+   "verdict": "pas mieux (réponse type -64.3 %, 1er token -2.8 %, tok/s -42.1 %, meilleure config remesurée à côté)"
+  }
+ ],
+ "profil": {
+  "modele": "qwen3-next-80b-fp8",
+  "store_id": "65c05efbaf3c",
+  "date": "2026-10-05T15:01",
+  "reglages": {
+   "read_parts": 4,
+   "prefill_grouped": 192,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 2.105
+  },
+  "changes_par_rapport_au_depart": {},
+  "reponse_type_s": 32.8,
+  "depart_reponse_type_s": 32.8
+ }
+}

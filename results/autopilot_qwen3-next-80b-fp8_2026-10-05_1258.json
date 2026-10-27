@@ -1,0 +1,197 @@
+{
+ "summary": {
+  "depart": {
+   "read_parts": 1,
+   "prefill_grouped": 0,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 1.84
+  },
+  "depart_reponse_type_s": 52.8,
+  "meilleur": {
+   "read_parts": 2,
+   "prefill_grouped": 0,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 1.84
+  },
+  "meilleur_reponse_type_s": 34.2,
+  "gain_pourcent": 35.2,
+  "essais": 11,
+  "gardes": [
+   {
+    "read_parts": 2
+   }
+  ],
+  "relances": 0,
+  "minutes": 17.5,
+  "rapport": "Meilleure configuration : read_parts=2. Tous les autres changements testés n'ont pas amélioré la réponse type de plus de 5 %. Le SSD est mieux exploité avec 2 lectures simultanées, et le cache VRAM/RAM est déjà optimisé. Aucune autre variable n'apporte de gain significatif."
+ },
+ "journal": [
+  {
+   "essai": 0,
+   "changements": "départ",
+   "reponse_type_s": 52.8,
+   "tok_s": 4.33,
+   "premier_token_s": 6.56,
+   "kl": 0.0,
+   "verdict": "départ"
+  },
+  {
+   "essai": 1,
+   "changements": {
+    "read_parts": 2
+   },
+   "reponse_type_s": 34.5,
+   "tok_s": 7.02,
+   "premier_token_s": 6.0,
+   "kl": 0.0,
+   "verdict": "GARDÉ : +35.2 % (confirmé)"
+  },
+  {
+   "essai": 2,
+   "changements": {
+    "prefetch_depth": 2
+   },
+   "reponse_type_s": 44.3,
+   "tok_s": 5.22,
+   "premier_token_s": 5.99,
+   "kl": 0.0001,
+   "verdict": "pas mieux (-29.5 %, seuil 5 %)"
+  },
+  {
+   "essai": 3,
+   "changements": {
+    "prefetch_mass": 0.8
+   },
+   "reponse_type_s": 52.0,
+   "tok_s": 4.34,
+   "premier_token_s": 5.89,
+   "kl": 0.0,
+   "verdict": "pas mieux (-52.0 %, seuil 5 %)"
+  },
+  {
+   "essai": 4,
+   "changements": {
+    "cache_eviction": "stale"
+   },
+   "reponse_type_s": 71.0,
+   "tok_s": 3.19,
+   "premier_token_s": 8.33,
+   "kl": 0.0,
+   "verdict": "pas mieux (-107.6 %, seuil 5 %)"
+  },
+  {
+   "essai": 5,
+   "changements": {
+    "full_graph": false
+   },
+   "reponse_type_s": 33.9,
+   "tok_s": 7.11,
+   "premier_token_s": 5.72,
+   "kl": 0.0,
+   "verdict": "pas mieux (+0.9 %, seuil 5 %)"
+  },
+  {
+   "essai": 6,
+   "changements": {
+    "prefetch": false
+   },
+   "reponse_type_s": 34.9,
+   "tok_s": 6.89,
+   "premier_token_s": 5.83,
+   "kl": 0.0,
+   "verdict": "pas mieux (-2.0 %, seuil 5 %)"
+  },
+  {
+   "essai": 7,
+   "changements": {
+    "ram_gb": 3.0
+   },
+   "reponse_type_s": 39.3,
+   "tok_s": 6.05,
+   "premier_token_s": 6.18,
+   "kl": 0.0001,
+   "verdict": "pas mieux (-14.9 %, seuil 5 %)"
+  },
+  {
+   "essai": 8,
+   "changements": {
+    "vram_gb": 1.74
+   },
+   "reponse_type_s": 35.1,
+   "tok_s": 6.88,
+   "premier_token_s": 6.02,
+   "kl": 0.0,
+   "verdict": "pas mieux (-2.6 %, seuil 5 %)"
+  },
+  {
+   "essai": 9,
+   "changements": {
+    "read_parts": 4
+   },
+   "reponse_type_s": 35.9,
+   "tok_s": 6.71,
+   "premier_token_s": 6.06,
+   "kl": 0.0,
+   "verdict": "pas mieux (-5.0 %, seuil 5 %)"
+  },
+  {
+   "essai": 10,
+   "changements": {
+    "prefill_grouped": 64
+   },
+   "reponse_type_s": 32.6,
+   "tok_s": 6.95,
+   "premier_token_s": 3.86,
+   "kl": 0.0,
+   "verdict": "pas mieux (+4.7 %, seuil 5 %)"
+  },
+  {
+   "essai": 11,
+   "changements": {
+    "prefill_skip": 0.05
+   },
+   "reponse_type_s": 33.1,
+   "tok_s": 7.22,
+   "premier_token_s": 5.42,
+   "kl": 0.0002,
+   "verdict": "pas mieux (+3.2 %, seuil 5 %)"
+  }
+ ],
+ "profil": {
+  "modele": "qwen3-next-80b-fp8",
+  "store_id": "65c05efbaf3c",
+  "date": "2026-10-05T12:58",
+  "reglages": {
+   "read_parts": 2,
+   "prefill_grouped": 0,
+   "cache_eviction": "lrfu",
+   "prefetch": true,
+   "prefetch_depth": 1,
+   "prefetch_mass": null,
+   "prefetch_disk_ahead": 0,
+   "full_graph": true,
+   "prefill_skip": null,
+   "ram_gb": 5.0,
+   "vram_gb": 1.84
+  },
+  "changes_par_rapport_au_depart": {
+   "read_parts": 2
+  },
+  "reponse_type_s": 34.2,
+  "depart_reponse_type_s": 52.8
+ }
+}

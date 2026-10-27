@@ -1,0 +1,16 @@
+# torch n'est PAS dans ce fichier : depuis PyPI, pip installerait la version CPU sous
+# Windows. Installer torch avec CUDA 13 d'abord :
+#   pip install torch --index-url https://download.pytorch.org/whl/cu130
+transformers==5.15.1
+safetensors>=0.5
+numpy>=1.26
+psutil>=5.9
+pytest>=8
+# L'app (scripts/app.py, doc 20) : serveur web local, téléchargement des modèles, MCP, PDF
+fastapi>=0.115
+uvicorn>=0.30
+huggingface_hub>=1.31,<2  # transformers 5.15 exige < 2 ; datasets 5 exige >= 1.31
+mcp>=1.9
+pypdf>=3
+# Élagage REAP (doc 22) : jeux de calibration et d'évaluation
+datasets>=3

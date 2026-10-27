@@ -1,0 +1,651 @@
+{
+ "environment": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.0",
+  "torch": "2.14.0+cu130",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "cpu_threads": 12,
+  "ram_total_gib": 15.8,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "vram_total_gib": 6.0,
+  "transformers": "5.15.1",
+  "store": "C:\\moe-store\\olmoe",
+  "store_precisions": [
+   "fp16",
+   "int4"
+  ],
+  "fast_budget_gib": 2.98,
+  "host_budget_gib": 5.0,
+  "b_pcie_gbs": 12.58,
+  "b_host_gbs": 4.11,
+  "prefetch": true,
+  "qstar": true
+ },
+ "k": 8,
+ "micro": {
+  "launch_us": 18.890199993620627,
+  "sync_us": 24.616000009700656,
+  "floor_loop_gpu_ms": 1.7429818725585937,
+  "floor_loop_wall_ms": 1.819841499964241,
+  "floor_bmm_gpu_ms": 0.3522198486328125,
+  "floor_bmm_wall_ms": 0.3553520000423305,
+  "vram_bandwidth_gbs": 285.79677264281884,
+  "dequant_int4_expert_gpu_ms": 0.5674027252197266,
+  "dequant_int4_expert_wall_ms": 0.5610144999809563
+ },
+ "decode": {
+  "lo / base": {
+   "async": {
+    "ms_per_token": 159.02147291672009,
+    "moe_ms_per_token": 123.01999999605566,
+    "moe_ms_per_layer": 7.688749999753479,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.09605612001450936,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.7731217447523401,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.019178255248183024,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 6.345541666632926,
+     "5 copies lanc\u00e9es + branche CPU": 0.0016898435243698866,
+     "6 attente disque/copies + calcul des manquants": 0.0009274742372629893,
+     "7 prefetch": 0.4498208330877181
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "sync": {
+    "ms_per_token": 160.91077500004758,
+    "moe_ms_per_token": 125.12424583443742,
+    "moe_ms_per_layer": 7.820265364652339,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.1163326823340564,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.8038686199067039,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.03211458315869701,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 6.34309257810628,
+     "5 copies lanc\u00e9es + branche CPU": 0.012540624898823202,
+     "6 attente disque/copies + calcul des manquants": 0.009538151308182327,
+     "7 prefetch": 0.47816419277069144
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   }
+  },
+  "lo / defaut": {
+   "async": {
+    "ms_per_token": 80.54245208343976,
+    "moe_ms_per_token": 46.15231667169913,
+    "moe_ms_per_layer": 2.884519791981196,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.16074088487509167,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.0811837240917157,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.019820572788376012,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 2.6117865884316416,
+     "5 copies lanc\u00e9es + branche CPU": 0.0014115887173223503,
+     "6 attente disque/copies + calcul des manquants": 0.0008675782889137432,
+     "7 prefetch": 0.007091276131632185
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "sync": {
+    "ms_per_token": 81.20211458329625,
+    "moe_ms_per_token": 47.211731248656484,
+    "moe_ms_per_layer": 2.9507332030410303,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.1800183589466542,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.09224960962228579,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.030932551851492462,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 2.595085807513442,
+     "5 copies lanc\u00e9es + branche CPU": 0.011537239572589897,
+     "6 attente disque/copies + calcul des manquants": 0.009325911435098533,
+     "7 prefetch": 0.008545182292133783
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   }
+  },
+  "lo / grp": {
+   "async": {
+    "ms_per_token": 49.592275000274334,
+    "moe_ms_per_token": 14.241718750781729,
+    "moe_ms_per_layer": 0.890107421923858,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.16241822942220097,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.08239557250059686,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.019994400929590483,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.0071852865062282945,
+     "5 copies lanc\u00e9es + branche CPU": 0.0006074223506402632,
+     "6 attente disque/copies + calcul des manquants": 0.6079361974495138,
+     "7 prefetch": 0.008000651310643056
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "sync": {
+    "ms_per_token": 57.20529791657706,
+    "moe_ms_per_token": 22.115977081436238,
+    "moe_ms_per_layer": 1.3822485675897649,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.18781718758494512,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.09327096357007274,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.0301795572189197,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.01671861961464553,
+     "5 copies lanc\u00e9es + branche CPU": 0.008334505347799373,
+     "6 attente disque/copies + calcul des manquants": 1.0114210937028172,
+     "7 prefetch": 0.011943489615381017
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   }
+  },
+  "lo / grp+d1": {
+   "async": {
+    "ms_per_token": 49.968870833254186,
+    "moe_ms_per_token": 14.51224583433941,
+    "moe_ms_per_layer": 0.9070153646462131,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.16560247418813864,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.0823098955796316,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.02012018236049092,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.007293099088201416,
+     "5 copies lanc\u00e9es + branche CPU": 0.0006087237807150814,
+     "6 attente disque/copies + calcul des manquants": 0.6213942710928677,
+     "7 prefetch": 0.00800703101807206
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   },
+   "sync": {
+    "ms_per_token": 58.10613125019396,
+    "moe_ms_per_token": 22.301733333733864,
+    "moe_ms_per_layer": 1.3938583333583665,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.18943242181042783,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.0961669268993622,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.0306117189741902,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.016975781212143676,
+     "5 copies lanc\u00e9es + branche CPU": 0.008408984437361747,
+     "6 attente disque/copies + calcul des manquants": 1.0169723958786865,
+     "7 prefetch": 0.012162499994398482
+    },
+    "fast_hit_rate": 1.0,
+    "disk_per_token": 0.0
+   }
+  },
+  "lo / grp+d1+c2": {
+   "async": {
+    "ms_per_token": 55.268341666608954,
+    "moe_ms_per_token": 19.859268748405157,
+    "moe_ms_per_layer": 1.2412042967753223,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.1588136717979675,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.07875104180736041,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.0190585937502874,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.006998437887280791,
+     "5 copies lanc\u00e9es + branche CPU": 0.008173697381153033,
+     "6 attente disque/copies + calcul des manquants": 0.6346376305259582,
+     "7 prefetch": 0.33299882799534924
+    },
+    "fast_hit_rate": 0.9967447916666666,
+    "disk_per_token": 0.0
+   },
+   "sync": {
+    "ms_per_token": 63.8757562498237,
+    "moe_ms_per_token": 28.13917916319042,
+    "moe_ms_per_layer": 1.7586986976994012,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.18493919314247856,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.09593346330423931,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.0308423176610025,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.017429426956520427,
+     "5 copies lanc\u00e9es + branche CPU": 0.019943359423753765,
+     "6 attente disque/copies + calcul des manquants": 1.0833695313484288,
+     "7 prefetch": 0.30235078120692077
+    },
+    "fast_hit_rate": 0.9967447916666666,
+    "disk_per_token": 0.0
+   }
+  },
+  "hi / base": {
+   "async": {
+    "ms_per_token": 1592.614627083094,
+    "moe_ms_per_token": 1507.969193751099,
+    "moe_ms_per_layer": 94.24807460944369,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.6384361977514649,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.9396880206319717,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.2655730471777436,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 2.7106144530838114,
+     "5 copies lanc\u00e9es + branche CPU": 8.689358072767087,
+     "6 attente disque/copies + calcul des manquants": 59.094623176937,
+     "7 prefetch": 18.987171484601124
+    },
+    "fast_hit_rate": 0.7799479166666666,
+    "disk_per_token": 11.541666666666666
+   },
+   "sync": {
+    "ms_per_token": 1430.564662500122,
+    "moe_ms_per_token": 1341.4390541677978,
+    "moe_ms_per_layer": 83.83994088548737,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.15303723946165823,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.8315759118318056,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05487200460644696,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 2.8959964850893507,
+     "5 copies lanc\u00e9es + branche CPU": 4.859052213153821,
+     "6 attente disque/copies + calcul des manquants": 60.63638255221804,
+     "7 prefetch": 14.0566752602543
+    },
+    "fast_hit_rate": 0.7822265625,
+    "disk_per_token": 10.895833333333334
+   }
+  },
+  "hi / defaut": {
+   "async": {
+    "ms_per_token": 2534.8135291666645,
+    "moe_ms_per_token": 2472.5410291721346,
+    "moe_ms_per_layer": 154.5338143232584,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 1.1365221352927317,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.10794778650809651,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.04150156246396364,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 1.925174479386745,
+     "5 copies lanc\u00e9es + branche CPU": 2.469495702769109,
+     "6 attente disque/copies + calcul des manquants": 128.2976863282291,
+     "7 prefetch": 20.13828971356209
+    },
+    "fast_hit_rate": 0.7802734375,
+    "disk_per_token": 11.5
+   },
+   "sync": {
+    "ms_per_token": 560.3996645832012,
+    "moe_ms_per_token": 509.4733562512677,
+    "moe_ms_per_layer": 31.842084765704232,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.353166145847202,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.14789440090604936,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.056668228959703505,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 2.44784531272065,
+     "5 copies lanc\u00e9es + branche CPU": 1.919046745229025,
+     "6 attente disque/copies + calcul des manquants": 19.110806770603023,
+     "7 prefetch": 7.4567106771799745
+    },
+    "fast_hit_rate": 0.7804361979166666,
+    "disk_per_token": 11.083333333333334
+   }
+  },
+  "hi / grp": {
+   "async": {
+    "ms_per_token": 1282.5302187499499,
+    "moe_ms_per_token": 1205.614120835283,
+    "moe_ms_per_layer": 75.35088255220519,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.5876192704098079,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.10778932291562644,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.2547566409702995,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.08422708327771034,
+     "5 copies lanc\u00e9es + branche CPU": 9.95428984396085,
+     "6 attente disque/copies + calcul des manquants": 48.11014374983339,
+     "7 prefetch": 16.233036588308398
+    },
+    "fast_hit_rate": 0.7804361979166666,
+    "disk_per_token": 11.4375
+   },
+   "sync": {
+    "ms_per_token": 2798.160700000153,
+    "moe_ms_per_token": 2726.507991666343,
+    "moe_ms_per_layer": 170.40674947914644,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.281803906280705,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.30578177078647667,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.19661783862071994,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.06089791643641244,
+     "5 copies lanc\u00e9es + branche CPU": 30.392447916653964,
+     "6 attente disque/copies + calcul des manquants": 23.568301172171385,
+     "7 prefetch": 114.448599999965
+    },
+    "fast_hit_rate": 0.78076171875,
+    "disk_per_token": 11.020833333333334
+   }
+  },
+  "hi / grp+d1": {
+   "async": {
+    "ms_per_token": 937.2781645831006,
+    "moe_ms_per_token": 890.0049520816538,
+    "moe_ms_per_layer": 55.62530950510336,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.49569583328927064,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.1158157551609899,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.07656588563046778,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.26870898449260494,
+     "5 copies lanc\u00e9es + branche CPU": 1.3219714839086312,
+     "6 attente disque/copies + calcul des manquants": 49.52365651075752,
+     "7 prefetch": 3.8062752602930536
+    },
+    "fast_hit_rate": 0.7796223958333334,
+    "disk_per_token": 11.4375
+   },
+   "sync": {
+    "ms_per_token": 192.49628750003467,
+    "moe_ms_per_token": 145.0939791629935,
+    "moe_ms_per_layer": 9.068373697687093,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.2280811203452989,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.11824505181342222,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05343255198416349,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.05745403664529173,
+     "5 copies lanc\u00e9es + branche CPU": 1.6160652339938981,
+     "6 attente disque/copies + calcul des manquants": 3.61893177099167,
+     "7 prefetch": 3.3084753905162265
+    },
+    "fast_hit_rate": 0.7805989583333334,
+    "disk_per_token": 10.958333333333334
+   }
+  },
+  "hi / grp+d1+c2": {
+   "async": {
+    "ms_per_token": 226.14675000022544,
+    "moe_ms_per_token": 179.52083541755806,
+    "moe_ms_per_layer": 11.220052213597379,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.19796679703176778,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.09949804685523607,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.0406975261360761,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.02766718720674059,
+     "5 copies lanc\u00e9es + branche CPU": 1.641301953270613,
+     "6 attente disque/copies + calcul des manquants": 3.633907812703304,
+     "7 prefetch": 5.566140885169564
+    },
+    "fast_hit_rate": 0.7184244791666666,
+    "disk_per_token": 15.041666666666666
+   },
+   "sync": {
+    "ms_per_token": 238.56743124997593,
+    "moe_ms_per_token": 194.1736333362011,
+    "moe_ms_per_layer": 12.13585208351257,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.22258932305400472,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.11658645824278817,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05392539064056715,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.03896341159285536,
+     "5 copies lanc\u00e9es + branche CPU": 2.3115997394522005,
+     "6 attente disque/copies + calcul des manquants": 3.2594742189265467,
+     "7 prefetch": 6.096040625285089
+    },
+    "fast_hit_rate": 0.71826171875,
+    "disk_per_token": 14.895833333333334
+   }
+  },
+  "hobbit@0.8 / base": {
+   "async": {
+    "ms_per_token": 210.78218750002029,
+    "moe_ms_per_token": 167.5200333323422,
+    "moe_ms_per_layer": 10.470002083271387,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.13099127600450325,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.8847205730451909,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.04451901050591308,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 2.656045442449795,
+     "5 copies lanc\u00e9es + branche CPU": 1.0820105471983272,
+     "6 attente disque/copies + calcul des manquants": 2.4911365885979344,
+     "7 prefetch": 3.1700997390847383
+    },
+    "fast_hit_rate": 0.7763671875,
+    "disk_per_token": 11.5625
+   },
+   "sync": {
+    "ms_per_token": 223.01615208319467,
+    "moe_ms_per_token": 179.77385624817543,
+    "moe_ms_per_layer": 11.235866015510965,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.14694869793174803,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.9421496093864334,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05888281238715839,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 2.7377010418187333,
+     "5 copies lanc\u00e9es + branche CPU": 1.5946434893407968,
+     "6 attente disque/copies + calcul des manquants": 2.364711849016506,
+     "7 prefetch": 3.3557045576155056
+    },
+    "fast_hit_rate": 0.7796223958333334,
+    "disk_per_token": 11.0625
+   }
+  },
+  "hobbit@0.8 / defaut": {
+   "async": {
+    "ms_per_token": 179.80050208340495,
+    "moe_ms_per_token": 131.9540041664974,
+    "moe_ms_per_layer": 8.247125260406088,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.20512500013107152,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.10866197897030361,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.04144218775081754,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 1.9034285153149237,
+     "5 copies lanc\u00e9es + branche CPU": 0.993910156637412,
+     "6 attente disque/copies + calcul des manquants": 2.3022727861719736,
+     "7 prefetch": 2.6821712239097906
+    },
+    "fast_hit_rate": 0.7762044270833334,
+    "disk_per_token": 11.6875
+   },
+   "sync": {
+    "ms_per_token": 201.43373958338393,
+    "moe_ms_per_token": 152.21252708276248,
+    "moe_ms_per_layer": 9.513282942672655,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.2299701825071073,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.12691744797166393,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05648919299498326,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 2.017441536243799,
+     "5 copies lanc\u00e9es + branche CPU": 1.6038201822160165,
+     "6 attente disque/copies + calcul des manquants": 2.244863151095918,
+     "7 prefetch": 3.1975311198758996
+    },
+    "fast_hit_rate": 0.77783203125,
+    "disk_per_token": 11.3125
+   }
+  },
+  "hobbit@0.8 / grp": {
+   "async": {
+    "ms_per_token": 160.99792916641795,
+    "moe_ms_per_token": 117.81977916537774,
+    "moe_ms_per_layer": 7.363736197836109,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.19815533848562458,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.10588541687184261,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.04043059874447863,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.04649518217547666,
+     "5 copies lanc\u00e9es + branche CPU": 0.9800899739313232,
+     "6 attente disque/copies + calcul des manquants": 3.3999770835938157,
+     "7 prefetch": 2.5835252602822343
+    },
+    "fast_hit_rate": 0.7765299479166666,
+    "disk_per_token": 11.625
+   },
+   "sync": {
+    "ms_per_token": 181.77331041685343,
+    "moe_ms_per_token": 137.28444999560452,
+    "moe_ms_per_layer": 8.580278124725282,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.2286680990929805,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.12702317716654457,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05623294261643726,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.060696874906322286,
+     "5 copies lanc\u00e9es + branche CPU": 1.5897628908305705,
+     "6 attente disque/copies + calcul des manquants": 3.2897773435820454,
+     "7 prefetch": 3.193208333414077
+    },
+    "fast_hit_rate": 0.77880859375,
+    "disk_per_token": 11.5625
+   }
+  },
+  "hobbit@0.8 / grp+d1": {
+   "async": {
+    "ms_per_token": 147.16585416651165,
+    "moe_ms_per_token": 106.80308749063745,
+    "moe_ms_per_layer": 6.675192968164841,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.1843632810884325,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.10426184913588561,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.037015104283000255,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.041064192979926396,
+     "5 copies lanc\u00e9es + branche CPU": 0.8948777342160005,
+     "6 attente disque/copies + calcul des manquants": 2.975393099120538,
+     "7 prefetch": 2.4297553382363426
+    },
+    "fast_hit_rate": 0.7765299479166666,
+    "disk_per_token": 11.625
+   },
+   "sync": {
+    "ms_per_token": 171.58845416664312,
+    "moe_ms_per_token": 129.74873332890033,
+    "moe_ms_per_layer": 8.10929583305627,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.21675898405722668,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.12057200531974861,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05378528667658126,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.05810338550797193,
+     "5 copies lanc\u00e9es + branche CPU": 1.5579555987793963,
+     "6 attente disque/copies + calcul des manquants": 2.8948098956220747,
+     "7 prefetch": 3.173469661570986
+    },
+    "fast_hit_rate": 0.77880859375,
+    "disk_per_token": 11.5625
+   }
+  },
+  "hobbit@0.8 / grp+d1+c2": {
+   "async": {
+    "ms_per_token": 199.5184145832051,
+    "moe_ms_per_token": 157.16194791336116,
+    "moe_ms_per_layer": 9.822621744585073,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.18841041683496465,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.10565403655012535,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.03866822894830572,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.02590091169925775,
+     "5 copies lanc\u00e9es + branche CPU": 1.5690049478583508,
+     "6 attente disque/copies + calcul des manquants": 2.774520312527784,
+     "7 prefetch": 5.1119415362184855
+    },
+    "fast_hit_rate": 0.7174479166666666,
+    "disk_per_token": 15.5625
+   },
+   "sync": {
+    "ms_per_token": 226.11040208327418,
+    "moe_ms_per_token": 180.862645825376,
+    "moe_ms_per_layer": 11.303915364086,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.23020572878825382,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.1264847656822591,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.0578764325685673,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.041671744763031406,
+     "5 copies lanc\u00e9es + branche CPU": 2.2990945311676114,
+     "6 attente disque/copies + calcul des manquants": 2.676880989857485,
+     "7 prefetch": 5.834526041326171
+    },
+    "fast_hit_rate": 0.7198893229166666,
+    "disk_per_token": 15.6875
+   }
+  }
+ },
+ "launches_per_token": 3199.125,
+ "top_cpu": [
+  {
+   "op": "cudaLaunchKernel",
+   "calls": 24351,
+   "self_cpu_ms": 480.18360000002707
+  },
+  {
+   "op": "aten::_to_copy",
+   "calls": 7491,
+   "self_cpu_ms": 216.6884239999861
+  },
+  {
+   "op": "aten::sum",
+   "calls": 1554,
+   "self_cpu_ms": 145.75757700001805
+  },
+  {
+   "op": "cudaMemcpyAsync",
+   "calls": 2568,
+   "self_cpu_ms": 119.87079999998905
+  },
+  {
+   "op": "aten::mul",
+   "calls": 4840,
+   "self_cpu_ms": 84.79857599998888
+  },
+  {
+   "op": "aten::mm",
+   "calls": 2499,
+   "self_cpu_ms": 82.0061559999871
+  },
+  {
+   "op": "aten::copy_",
+   "calls": 9843,
+   "self_cpu_ms": 77.87543000001094
+  },
+  {
+   "op": "aten::slice",
+   "calls": 12874,
+   "self_cpu_ms": 67.79769400002952
+  },
+  {
+   "op": "Activity Buffer Request",
+   "calls": 7,
+   "self_cpu_ms": 60.35285599999892
+  },
+  {
+   "op": "aten::view",
+   "calls": 20596,
+   "self_cpu_ms": 57.5200420000162
+  },
+  {
+   "op": "aten::cat",
+   "calls": 2483,
+   "self_cpu_ms": 44.86293899998214
+  },
+  {
+   "op": "aten::bitwise_and",
+   "calls": 1538,
+   "self_cpu_ms": 43.67644300001324
+  },
+  {
+   "op": "aten::empty",
+   "calls": 4916,
+   "self_cpu_ms": 39.584050999973904
+  },
+  {
+   "op": "aten::empty_strided",
+   "calls": 7635,
+   "self_cpu_ms": 38.838468000000574
+  },
+  {
+   "op": "aten::__rshift__",
+   "calls": 1538,
+   "self_cpu_ms": 30.797724999991594
+  },
+  {
+   "op": "aten::unsqueeze",
+   "calls": 5707,
+   "self_cpu_ms": 28.215267999967676
+  },
+  {
+   "op": "aten::as_strided",
+   "calls": 27118,
+   "self_cpu_ms": 27.06200700001832
+  },
+  {
+   "op": "aten::index",
+   "calls": 897,
+   "self_cpu_ms": 26.42695799999684
+  },
+  {
+   "op": "aten::sub",
+   "calls": 1538,
+   "self_cpu_ms": 26.109378999990412
+  },
+  {
+   "op": "cuLaunchKernel",
+   "calls": 1242,
+   "self_cpu_ms": 22.52169999999844
+  }
+ ]
+}

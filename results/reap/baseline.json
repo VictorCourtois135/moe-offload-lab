@@ -1,0 +1,187 @@
+{
+ "nom": "baseline",
+ "date": "2026-10-13 14:54",
+ "store": {
+  "chemin": "C:\\moe-store\\qwen3-next",
+  "id": "65c05efbaf3c",
+  "couches": 48,
+  "experts": 512,
+  "gio": 38.25
+ },
+ "moteur": "VRAM: 2155/2156 Mio, 1352 entrées (1077 Mio épinglés) | RAM: 2560/5120 Mio, 1606 entrées (2560 Mio épinglés) | pool RAM épinglée : 2.53/5.25 Gio alloués, 14 slots libres",
+ "politique": "hobbit(t1=0.6)",
+ "environnement": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.0",
+  "torch": "2.14.0+cu130",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "cpu_threads": 12,
+  "ram_total_gib": 15.8,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "vram_total_gib": 6.0,
+  "transformers": "5.15.1",
+  "store": "C:\\moe-store\\qwen3-next",
+  "store_precisions": [
+   "int4"
+  ],
+  "fast_budget_gib": 2.11,
+  "host_budget_gib": 5.0,
+  "b_pcie_gbs": 12.53,
+  "b_host_gbs": 0.38,
+  "prefetch": true,
+  "qstar": true
+ },
+ "vitesse": {
+  "tok_s": 5.100237434147193,
+  "ttft_s": 4.683227699948475,
+  "hit_vram": 0.5778491171749599,
+  "lectures_disque_par_token": 142.6487603305785,
+  "hit_ram": 0.2891671308517595,
+  "invites": 3
+ },
+ "outils": {
+  "score": 1.0,
+  "reussies": 20,
+  "total": 20,
+  "secondes": 739.1,
+  "details": [
+   {
+    "id": "calc_fr",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"calculer\", \"arguments\": {\"expression\": \"1847 * 23\"}}\n</tool_call>"
+   },
+   {
+    "id": "calc_pct",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"calculer\", \"arguments\": {\"expression\": \"(6.8 - 3.35) / 3.35 * 100\"}}\n</tool_call>"
+   },
+   {
+    "id": "calc_en",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"calculer\", \"arguments\": {\"expression\": \"2 ** 20\"}}\n</tool_call>"
+   },
+   {
+    "id": "calc_temp",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"calculer\", \"arguments\": {\"expression\": \"(72 - 32) * 5 / 9\"}}\n</tool_call>"
+   },
+   {
+    "id": "lire_fr",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"lire_fichier\", \"arguments\": {\"chemin\": \"D:\\\\Documents\\\\notes\\\\reunion.txt\"}}\n</tool_call>"
+   },
+   {
+    "id": "lire_en",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"lire_fichier\", \"arguments\": {\"chemin\": \"C:\\\\data\\\\report.md\"}}\n</tool_call>"
+   },
+   {
+    "id": "lister",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"lister_dossier\", \"arguments\": {\"chemin\": \"C:\\\\Projets\\\\site\"}}\n</tool_call>"
+   },
+   {
+    "id": "chercher_pdf",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"chercher_fichiers\", \"arguments\": {\"dossier\": \"D:\\\\Factures\", \"motif\": \"*.pdf\"}}\n</tool_call>"
+   },
+   {
+    "id": "dossier_test",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"lister_dossier\", \"arguments\": {\"chemin\": \"D:\\\\Utilisateurs\\\\Home\\\\Documents\\\\test\"}}\n</tool_call>"
+   },
+   {
+    "id": "web_fr",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"chercher_web\", \"arguments\": {\"requete\": \"dernière version de Python sortie\"}}\n</tool_call>"
+   },
+   {
+    "id": "web_en",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"chercher_web\", \"arguments\": {\"requete\": \"PyTorch 2.14 release date\"}}\n</tool_call>"
+   },
+   {
+    "id": "page_fr",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"lire_page\", \"arguments\": {\"url\": \"https://pytorch.org/blog/\"}}\n</tool_call>"
+   },
+   {
+    "id": "page_en",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"lire_page\", \"arguments\": {\"url\": \"https://docs.python.org/3/whatsnew/\"}}\n</tool_call>"
+   },
+   {
+    "id": "ecrire",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"ecrire_fichier\", \"arguments\": {\"chemin\": \"C:\\\\temp\\\\salut.txt\", \"contenu\": \"Bonjour tout le monde\"}}\n</tool_call>"
+   },
+   {
+    "id": "python_premiers",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"executer_python\", \"arguments\": {\"code\": \"def est_premier(n):\\n    if n <= 1:\\n        return False\\n    for i in range(2, int(n**0.5) + 1):\\n        if n % i == 0:\\n            return False\\n    return True\\n\\nnombres_premiers = []\\nnombre = 2\\nwhile len(nombres_premiers) < 10:\\n    if est_premier(nombre):\\n        nombres_premiers.append(nombre)\\n    nombre += 1\\n\\nprint(nom"
+   },
+   {
+    "id": "python_carres",
+    "ok": true,
+    "raison": "",
+    "reponse": "<tool_call>\n{\"name\": \"executer_python\", \"arguments\": {\"code\": \"print(sum(i**2 for i in range(1, 101)))\"}}\n</tool_call>"
+   },
+   {
+    "id": "direct_capitale",
+    "ok": true,
+    "raison": "",
+    "reponse": "La capitale de la Belgique est Bruxelles."
+   },
+   {
+    "id": "direct_traduction",
+    "ok": true,
+    "raison": "",
+    "reponse": "The cat is sleeping on the sofa."
+   },
+   {
+    "id": "direct_bissextile",
+    "ok": true,
+    "raison": "",
+    "reponse": "366"
+   },
+   {
+    "id": "direct_salut",
+    "ok": true,
+    "raison": "",
+    "reponse": "Hello! I'm doing great, thanks for asking! 😊 How about you? How can I assist you today?"
+   }
+  ]
+ },
+ "perplexite": {
+  "wikitext": {
+   "ppl": 6.91019379844506,
+   "nll": 1.932997683470963,
+   "extraits": 50,
+   "tokens_predits": 25550,
+   "secondes": 443.4
+  },
+  "fr": {
+   "ppl": 4.369511193431905,
+   "nll": 1.4746511478013489,
+   "extraits": 20,
+   "tokens_predits": 10220,
+   "secondes": 219.9
+  }
+ },
+ "minutes": 24.9
+}

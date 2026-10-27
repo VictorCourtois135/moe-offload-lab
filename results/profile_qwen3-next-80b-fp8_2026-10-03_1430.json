@@ -1,0 +1,217 @@
+{
+ "environment": {
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.0",
+  "torch": "2.14.0+cu130",
+  "cpu": "Intel64 Family 6 Model 158 Stepping 10, GenuineIntel",
+  "cpu_threads": 12,
+  "ram_total_gib": 15.8,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "vram_total_gib": 6.0,
+  "transformers": "5.15.1",
+  "store": "C:\\moe-store\\qwen3-next",
+  "store_precisions": [
+   "int4"
+  ],
+  "fast_budget_gib": 1.84,
+  "host_budget_gib": 4.0,
+  "b_pcie_gbs": 12.58,
+  "b_host_gbs": 0.36,
+  "prefetch": true,
+  "qstar": true
+ },
+ "k": 10,
+ "micro": {
+  "launch_us": 16.745299973990768,
+  "sync_us": 22.801500163041055,
+  "floor_loop_gpu_ms": 2.0970123291015623,
+  "floor_loop_wall_ms": 1.9851960000232793,
+  "floor_bmm_gpu_ms": 0.4101769638061523,
+  "floor_bmm_wall_ms": 0.38376250013243407,
+  "vram_bandwidth_gbs": 153.38394291136524,
+  "dequant_int4_expert_gpu_ms": 0.4253412628173828,
+  "dequant_int4_expert_wall_ms": 0.3843215000233613,
+  "grouped_int4_v1_gpu_ms": 1.1577145385742187,
+  "grouped_int4_v1_gbs": 14.435061013038016,
+  "grouped_int4_v2_gpu_ms": 0.38038097381591796,
+  "grouped_int4_v2_gbs": 43.93405861589563,
+  "grouped_int4_v3_gpu_ms": 0.4006673431396484,
+  "grouped_int4_v3_gbs": 41.70961343903518,
+  "grouped_int4_v4_gpu_ms": 0.3754383850097656,
+  "grouped_int4_v4_gbs": 44.51244376508094,
+  "grouped_int4_v3_wall_ms": 0.37784800020745024,
+  "grouped_int4_auto_version": 3.0,
+  "grouped_int4_graph_wall_ms": 0.11695749999489635,
+  "grouped_int4_v2_kernel_ms": 0.12489343643188476,
+  "grouped_int4_v2_kernel_gbs": 133.80751204739514,
+  "grouped_int4_v3_kernel_ms": 0.11416640281677246,
+  "grouped_int4_v3_kernel_gbs": 146.3800171300908,
+  "grouped_int4_v4_kernel_ms": 0.1502790355682373,
+  "grouped_int4_v4_kernel_gbs": 111.20433357061115,
+  "grouped_int8_kernel_ms": 0.18449087142944337,
+  "grouped_int8_kernel_gbs": 175.83699263086015,
+  "grouped_fp16_kernel_ms": 0.26198015213012693,
+  "grouped_fp16_kernel_gbs": 240.1501010227294,
+  "grouped_int4_floor_ms": 0.10895325601100922,
+  "grouped_fp16_gpu_ms": 0.4253790283203125,
+  "grouped_fp16_gbs": 147.90235486791565
+ },
+ "decode": {
+  "lo / defaut": {
+   "async": {
+    "ms_per_token": 146.69238437454624,
+    "moe_ms_per_token": 136.13150005039643,
+    "dense_ms_per_token": 10.56088432414981,
+    "moe_ms_per_layer": 2.836072917716592,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.5606146485206409,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.055191406886478944,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.045527213198207996,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.03199225250227755,
+     "5 copies lanc\u00e9es + branche CPU": 0.06348671888645185,
+     "6 attente disque/copies + calcul des manquants": 1.7834464833489012,
+     "7 prefetch": 0.28044824258207274
+    },
+    "fast_hit_rate": 0.841015625,
+    "disk_per_token": 60.71875,
+    "fills_per_token": 76.3125,
+    "prefetch_per_token": 114.0,
+    "h2d_mb_per_token": 226.3623046875,
+    "prefetch_precision": 0.8432845744680851,
+    "prefetch_recall": 0.8432845744680851,
+    "full_share": 0.0,
+    "full_fallbacks": 0
+   },
+   "sync": {
+    "ms_per_token": 149.25080000102753,
+    "moe_ms_per_token": 139.3691312368901,
+    "dense_ms_per_token": 9.88166876413743,
+    "moe_ms_per_layer": 2.9035235674352102,
+    "phases_ms_per_layer": {
+     "1 routage lu sur CPU (synchro)": 0.09370494751692604,
+     "2 d\u00e9cisions HOBBIT + regroupement": 0.06763300852223135,
+     "3 recherche caches + q* + lectures lanc\u00e9es": 0.05962597670835142,
+     "4 calcul des experts d\u00e9j\u00e0 en VRAM": 0.04967669246980222,
+     "5 copies lanc\u00e9es + branche CPU": 0.13192525989325077,
+     "6 attente disque/copies + calcul des manquants": 1.6543026695217122,
+     "7 prefetch": 0.34981087355845375
+    },
+    "fast_hit_rate": 0.8449869791666667,
+    "disk_per_token": 56.8125,
+    "fills_per_token": 74.40625,
+    "prefetch_per_token": 111.875,
+    "h2d_mb_per_token": 224.71875,
+    "prefetch_precision": 0.8429521276595745,
+    "prefetch_recall": 0.8429521276595745,
+    "full_share": 0.0,
+    "full_fallbacks": 0
+   },
+   "cuda_graphs": "CUDA graphs : 49 segments, 48 couches MoE entre eux, paliers captur\u00e9s [128] sur [128, 256, 512, 1024, 2048], cache statique 2048 tokens ; token entier (A5) : 0 tokens, 0 refaits"
+  }
+ },
+ "trace_variant": "defaut",
+ "launches_per_token": 1.0,
+ "graph_launches_per_token": 97.0,
+ "top_cpu": [
+  {
+   "op": "cudaMemcpyAsync",
+   "calls": 669,
+   "self_cpu_ms": 89.31899999999962
+  },
+  {
+   "op": "cudaGraphLaunch",
+   "calls": 388,
+   "self_cpu_ms": 61.761799999999894
+  },
+  {
+   "op": "aten::copy_",
+   "calls": 669,
+   "self_cpu_ms": 8.73730000000025
+  },
+  {
+   "op": "aten::empty",
+   "calls": 473,
+   "self_cpu_ms": 5.463199999999895
+  },
+  {
+   "op": "Activity Buffer Request",
+   "calls": 5,
+   "self_cpu_ms": 3.1330000000000875
+  },
+  {
+   "op": "aten::_to_copy",
+   "calls": 200,
+   "self_cpu_ms": 2.3540999999992427
+  },
+  {
+   "op": "aten::record_stream",
+   "calls": 338,
+   "self_cpu_ms": 1.4034999999995708
+  },
+  {
+   "op": "cudaStreamIsCapturing",
+   "calls": 1664,
+   "self_cpu_ms": 1.2771999999994363
+  },
+  {
+   "op": "cudaEventRecordWithFlags",
+   "calls": 534,
+   "self_cpu_ms": 1.1751000000001754
+  },
+  {
+   "op": "aten::view",
+   "calls": 212,
+   "self_cpu_ms": 1.1558000000000166
+  },
+  {
+   "op": "cudaEventQuery",
+   "calls": 991,
+   "self_cpu_ms": 1.1350000000002418
+  },
+  {
+   "op": "cudaDeviceSynchronize",
+   "calls": 2,
+   "self_cpu_ms": 0.8743999999999651
+  },
+  {
+   "op": "aten::empty_strided",
+   "calls": 200,
+   "self_cpu_ms": 0.8165000000000182
+  },
+  {
+   "op": "cudaStreamSynchronize",
+   "calls": 200,
+   "self_cpu_ms": 0.8062000000003336
+  },
+  {
+   "op": "aten::to",
+   "calls": 200,
+   "self_cpu_ms": 0.7991000000000295
+  },
+  {
+   "op": "cudaEventRecord",
+   "calls": 338,
+   "self_cpu_ms": 0.7155999999996274
+  },
+  {
+   "op": "cudaStreamWaitEvent",
+   "calls": 465,
+   "self_cpu_ms": 0.7099999999996289
+  },
+  {
+   "op": "aten::reshape",
+   "calls": 204,
+   "self_cpu_ms": 0.4346999999995687
+  },
+  {
+   "op": "Buffer Flush",
+   "calls": 1,
+   "self_cpu_ms": 0.4153000000000466
+  },
+  {
+   "op": "aten::index_select",
+   "calls": 4,
+   "self_cpu_ms": 0.31660000000005223
+  }
+ ]
+}
